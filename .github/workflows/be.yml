@@ -1,0 +1,25 @@
+name: Deploy BE (PHP) to FTP
+
+
+on:
+push:
+branches: ["main"]
+paths:
+- "be/**"
+
+
+jobs:
+deploy:
+runs-on: ubuntu-latest
+steps:
+- uses: actions/checkout@v3
+
+
+- name: FTP Deploy BE
+uses: SamKirkland/FTP-Deploy-Action@4.3.4
+with:
+server: ${{ secrets.BE_FTP_SERVER }}
+username: ${{ secrets.BE_FTP_USERNAME }}
+password: ${{ secrets.BE_FTP_PASSWORD }}
+local-dir: ./be
+server-dir: /public_html/be
