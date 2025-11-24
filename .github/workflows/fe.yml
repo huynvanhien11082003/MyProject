@@ -1,20 +1,22 @@
-name: Backend CI
+name: Deploy FE (HTML) to FTP
 
-on:                
-  push:            
-    branches:      
-      - main
+on:
+  push:
+    branches: ["main"]
     paths:
-      - 'backend/**'
+      - "fe/**"
 
-jobs:              
-  deploy:          
-    runs-on: ubuntu-latest  
-    
-    steps:         
-      - uses: actions/checkout@v3 
-      
-      - name: Setup Node/Python
-        uses: actions/setup-node@v3
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: FTP Deploy FE
+        uses: SamKirkland/FTP-Deploy-Action@4.3.4
         with:
-          node-version: '18'
+          server: ${{ secrets.FE_FTP_SERVER }}
+          username: ${{ secrets.FE_FTP_USERNAME }}
+          password: ${{ secrets.FE_FTP_PASSWORD }}
+          local-dir: ./fe/
+          server-dir: /public_html/fe/
