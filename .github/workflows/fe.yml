@@ -19,4 +19,4 @@ jobs:
           username: ${{ secrets.FE_FTP_USERNAME }}
           password: ${{ secrets.FE_FTP_PASSWORD }}
           local-dir: ./frontend/
-          server-dir: /public_html/fe/
+          server-dir: /www.vanhienmnm.somee.com/
