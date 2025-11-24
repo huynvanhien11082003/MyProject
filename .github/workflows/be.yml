@@ -13,10 +13,10 @@ jobs:
       - uses: actions/checkout@v3
       
       - name: FTP Deploy BE
-        uses: SamKirkland/FTP-Deploy-Action@4.3.4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.BE_FTP_SERVER }}
           username: ${{ secrets.BE_FTP_USERNAME }}
           password: ${{ secrets.BE_FTP_PASSWORD }}
-          local-dir: ./be/
+          local-dir: ./backend/
           server-dir: /public_html/be/

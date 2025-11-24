@@ -13,10 +13,10 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: FTP Deploy FE
-        uses: SamKirkland/FTP-Deploy-Action@4.3.4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FE_FTP_SERVER }}
           username: ${{ secrets.FE_FTP_USERNAME }}
           password: ${{ secrets.FE_FTP_PASSWORD }}
-          local-dir: ./fe/
+          local-dir: ./frontend/
           server-dir: /public_html/fe/
